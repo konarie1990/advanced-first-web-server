@@ -29,10 +29,10 @@ app.put("/users/1", (req, res) => {
   res.json(state.users[0]);
 });
 
-app.delete("/users/1", (req, res) => {
-  state.users.shift();
-  res.send("DELETED THE ITEM");
-});
+// app.delete("/users/1", (req, res) => {
+//   state.users.shift();
+//   res.send("DELETED THE ITEM");
+// });
 
 // post from the client side using "name": object {}
 app.post("/users", (req, res) => {
@@ -62,4 +62,8 @@ app.put("/users/:userId", (req, res) => {
     avatar: req.body.avatar
   };
   res.send(user);
+});
+
+app.delete("/users/:userId", (req, res) => {
+  state.users.shift(state.users[req.params.userId]);
 });
